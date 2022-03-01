@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="9b85464a-1787-445c-bc1b-d2f885fd60aa" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="hello-rohanFlow" doc:id="db84ebf6-922c-4f61-8282-b10fa67c83ae" >
+		<http:listener doc:name="Listener" doc:id="074981b7-0e76-4945-89ca-55eecbb1231a" path="/hello" config-ref="HTTP_Listener_config"/>
+		<logger level="INFO" doc:name="Logger" doc:id="7d475c74-c710-4228-90d0-8891323f7b26" message="hello world"/>
+		<logger level="INFO" doc:name="Logger" doc:id="c02edc2b-46ca-4da3-9c57-8a9325b5cb1e" message="yes please"/>
+		<logger level="INFO" doc:name="Logger" doc:id="b5a54827-c87f-401c-8c8b-e17b9298a927" message="welcome"/>
+		<set-payload value='rohanparab' doc:name="Set Payload" doc:id="45ed8d92-4e44-4058-b777-e965b8bf0738" />
+		<logger level="INFO" doc:name="Logger" doc:id="952e9fd5-5130-455b-8c35-c87fde46331a" message="#[payload]"/>
+	</flow>
+</mule>
